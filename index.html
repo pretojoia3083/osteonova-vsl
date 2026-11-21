@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>OsteoNova — Supporto articolare e comfort quotidiano</title>
+  <style>
+    :root { --verde:#1f7a4d; --escuro:#14251d; --claro:#f4f7f5; --cinza:#5c6b63; }
+    * { box-sizing:border-box; }
+    body { margin:0; font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+           background:var(--claro); color:var(--escuro); line-height:1.55; }
+    header { background:var(--escuro); color:#fff; padding:18px 20px; }
+    header .marca { font-weight:800; letter-spacing:.5px; font-size:1.2rem; }
+    header .sub { font-size:.8rem; opacity:.8; }
+    main { max-width:820px; margin:0 auto; padding:32px 20px 60px; }
+    h1 { font-size:clamp(1.8rem,5vw,2.6rem); line-height:1.15; margin:0 0 12px; }
+    .subtitulo { font-size:1.1rem; color:var(--cinza); margin:0 0 28px; }
+    .video-box { background:#000; border-radius:14px; overflow:hidden; box-shadow:0 8px 28px rgba(0,0,0,.12); }
+    video { display:block; width:100%; height:auto; }
+    #cta-box { margin-top:22px; text-align:center; background:#fff; padding:24px;
+               border-radius:14px; border:1px solid #d9e4de; }
+    .btn { display:inline-block; background:var(--verde); color:#fff; text-decoration:none;
+           font-weight:700; font-size:1.05rem; padding:14px 28px; border-radius:999px;
+           box-shadow:0 4px 14px rgba(31,122,77,.28); }
+    .btn:hover { filter:brightness(1.08); }
+    .aviso { display:block; margin-top:10px; font-size:.85rem; color:var(--cinza); }
+    .nota { margin-top:34px; background:#fff; padding:22px; border-radius:14px; border:1px solid #d9e4de; }
+    .nota h2 { margin-top:0; font-size:1.2rem; }
+    .disclaimer { font-size:.8rem; color:var(--cinza); }
+    footer { text-align:center; padding:24px 20px 40px; font-size:.85rem; color:var(--cinza); }
+    footer a { color:var(--verde); text-decoration:none; margin:0 8px; }
+    .oculto { display:none !important; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="marca">OsteoNova</div>
+    <div class="sub">Integratore alimentare — supporto articolare</div>
+  </header>
+
+  <main>
+    <h1>Ritrova il piacere di muoverti con naturalezza</h1>
+    <p class="subtitulo">
+      Un percorso semplice, pensato per accompagnare il tuo comfort articolare,
+      giorno dopo giorno.
+    </p>
+
+    <section class="video-box">
+      <!-- SUBSTITUIR "video.mp4" PELO ARQUIVO DA VSL -->
+      <video id="vsl" controls preload="metadata" playsinline>
+        <source src="video.mp4" type="video/mp4">
+        Il tuo browser non supporta il video.
+        <a href="video.mp4">Scaricalo qui</a>.
+      </video>
+    </section>
+
+    <section id="cta-box" class="oculto">
+      <p>
+        Per ricevere tutte le informazioni e parlare con un consulente,
+        continua la registrazione.
+      </p>
+      <a id="cta" class="btn" href="#" target="_blank" rel="noopener">
+        Continua la registrazione
+      </a>
+      <small class="aviso">
+        Verrai indirizzato al breve modulo di raccolta dati del partner.
+      </small>
+    </section>
+
+    <section class="nota" id="informazioni">
+      <h2>In breve</h2>
+      <p>
+        OsteoNova è un integratore alimentare che unisce glucosamina, condroitina,
+        MSM, estratti di boswellia, curcuma e zenzero, collagene marino, vitamina C
+        e pepe nero. Si assume con semplicità: 3 capsule al giorno, 2 prima di pranzo
+        e 1 prima di cena, con un bicchiere d'acqua.
+      </p>
+      <p class="disclaimer">
+        Integratore alimentare. Non è un medicinale. Non sostituisce una dieta
+        varia ed equilibrata né uno stile di vita sano. Leggere sempre l'etichetta
+        e le indicazioni del produttore.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <a id="link-privacy" href="#informazioni">Informativa privacy</a>
+    <a id="link-contatti" href="#informazioni">Contatti</a>
+  </footer>
+
+  <script>
+    /* ===== CONFIGURAÇÃO ===== */
+    // Trocar pelo LINK DO STREAM Webvork rastreado quando ele for criado.
+    var LINK_CTA = "https://iit2.osteonovaoriginal.com/?utm_source=279743";
+    // Botão aparece quando faltam 2 minutos para o fim do vídeo.
+    var SEGUNDOS_ANTES_FIM = 120;
+    /* ======================== */
+
+    var video = document.getElementById("vsl");
+    var ctaBox = document.getElementById("cta-box");
+    var cta = document.getElementById("cta");
+    cta.href = LINK_CTA;
+
+    function mostrarCTA() {
+      ctaBox.classList.remove("oculto");
+    }
+
+    function verificarTempo() {
+      if (!isFinite(video.duration)) return;
+      // Se o vídeo for curto, mostra o botão de uma vez.
+      if (video.duration <= SEGUNDOS_ANTES_FIM + 10) {
+        mostrarCTA();
+        return;
+      }
+      var limiar = video.duration - SEGUNDOS_ANTES_FIM;
+      if (video.currentTime >= limiar) mostrarCTA();
+    }
+
+    video.addEventListener("loadedmetadata", verificarTempo);
+    video.addEventListener("timeupdate", verificarTempo);
+    video.addEventListener("ended", mostrarCTA);
+  </script>
+</body>
+</html>

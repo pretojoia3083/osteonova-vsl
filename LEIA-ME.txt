@@ -1,0 +1,41 @@
+COMO USAR A PÁGINA PONTE (OSTEONOVA / ITÁLIA)
+=============================================
+
+Arquivos:
+- index.html          -> página ponte em italiano
+- ROTEIRO_VSL_IT.txt  -> roteiro da VSL (~5 min, seguro para Meta)
+- video.mp4           -> coloque aqui o vídeo quando estiver pronto
+
+PASSO 1 — Vídeo
+---------------
+Quando você tiver a VSL, salve o arquivo como "video.mp4" dentro desta
+pasta. Se o arquivo tiver outro nome, edite no index.html a linha:
+    <source src="video.mp4" type="video/mp4">
+
+PASSO 2 — Link de destino
+-------------------------
+No index.html, procure:
+    var LINK_CTA = "https://iit2.osteonovaoriginal.com/?utm_source=279743";
+
+Troque pelo LINK DO STREAM Webvork rastreado (com seu ID de afiliado)
+quando ele for criado. Até lá, o link acima já funciona como destino.
+
+PASSO 3 — Publicar (GitHub Pages, grátis)
+------------------------------------------
+Não precisa comprar domínio agora. O GitHub Pages dá uma URL estável:
+    https://SEU-USUARIO.github.io/osteonova-vsl/
+
+Se depois quiser domínio próprio, compre e aponte para o GitHub Pages.
+
+PASSO 4 — Campanha
+------------------
+A campanha paga continua PAUSADA. Nada é ativado sem sua aprovação.
+O objetivo da campanha deve ser "Leads" (a página pede nome + telefone),
+não "Vendas".
+
+REGRAS META (não mudar)
+-----------------------
+- Não usar: cura, dor, artrose, inflamação, evitar médicos,
+  resultados garantidos, "100% natural" sem prova.
+- Usar: supporto, comfort, mobilità, benessere, integratore alimentare.
+- Manter o aviso: "Non è un medicinale."
